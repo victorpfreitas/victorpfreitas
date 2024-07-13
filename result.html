@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gymbros - Resultado</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black">
+  <header class="bg-red-600 text-white p-4 text-center">
+    <h1 class="text-3xl font-bold">Gymbros</h1>
+  </header>
+  <main class="p-4 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-4">Resultados</h2>
+    <div id="results" class="space-y-4"></div>
+    <div class="text-center mt-8">
+      <button onclick="window.location.href='index.html'" class="bg-red-600 text-white px-4 py-2 rounded">Voltar ao Formulário</button>
+    </div>
+  </main>
+  <script>
+    async function fetchChatGPTResponse(prompt) {
+      const response = await fetch('https://api.openai.com/v1/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer sk-proj-TNWVw5GmdR8LiSlaXFtuT3BlbkFJfcb0aLkWnLktUFM2aACk`
+        },
+        body: JSON.stringify({
+          model: 'text-davinci-003',
+          prompt: prompt,
+          max_tokens: 150
+        })
+      });
+      const data = await response.json();
+      return data.choices[0].text.trim();
+    }
+
+    function generatePrompt(data) {
+      return `Com base nas seguintes informações:
+Nome: ${data.name},
+Idade: ${data.age},
+Gênero: ${data.gender},
+Altura: ${data.height} cm,
+Peso: ${data.weight} kg,
+Objetivo: ${data.goal},
+Prazo: ${data.goal_time},
+Nível de atividade: ${data.activity_level},
+Frequência de exercício: ${data.exercise_frequency},
+Preferências alimentares: ${data.food_preferences},
+Experiência de treino: ${data.training_experience},
+Condições médicas: ${data.medical_condition ? data.medical_condition_details : 'Nenhuma'},
+Horas de sono: ${data.sleep_hours},
+Nível de estresse: ${data.stress_level}
+
+Descreva a taxa metabólica basal (BMR) e um plano de treino adequado para atingir o objetivo.`;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const data = JSON.parse(localStorage.getItem('fitnessData'));
+      if (!data) {
+        window.location.href = 'index.html';
+        return;
+      }
+
+      const resultsDiv = document.getElementById('results');
+      const prompt = generatePrompt(data);
+      const chatGPTResponse = await fetchChatGPTResponse(prompt);
+
+      resultsDiv.innerHTML = `
+        <div>
+          <h3 class="text-xl font-semibold">Resultado do ChatGPT:</h3>
+          <p>${chatGPTResponse}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>

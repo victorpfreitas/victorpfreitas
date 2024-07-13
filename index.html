@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gymbros - Formulário</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black">
+  <header class="bg-red-600 text-white p-4 text-center">
+    <h1 class="text-3xl font-bold">Gymbros</h1>
+  </header>
+  <main class="p-4 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-4">Informações Básicas</h2>
+    <form id="fitness-form" class="space-y-4" data-netlify="true" netlify>
+      <div>
+        <label for="name" class="block text-lg">Nome:</label>
+        <input type="text" id="name" name="name" class="w-full border border-gray-300 p-2" required>
+      </div>
+      <div>
+        <label for="age" class="block text-lg">Idade:</label>
+        <input type="number" id="age" name="age" class="w-full border border-gray-300 p-2" required>
+      </div>
+      <div>
+        <label for="gender" class="block text-lg">Gênero:</label>
+        <select id="gender" name="gender" class="w-full border border-gray-300 p-2" required>
+          <option value="male">Masculino</option>
+          <option value="female">Feminino</option>
+          <option value="other">Outro</option>
+        </select>
+      </div>
+      <div>
+        <label for="height" class="block text-lg">Altura (cm):</label>
+        <input type="number" id="height" name="height" class="w-full border border-gray-300 p-2" required>
+      </div>
+      <div>
+        <label for="weight" class="block text-lg">Peso (kg):</label>
+        <input type="number" id="weight" name="weight" class="w-full border border-gray-300 p-2" required>
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Objetivos</h2>
+      <div>
+        <label for="goal" class="block text-lg">Qual é o seu principal objetivo?</label>
+        <select id="goal" name="goal" class="w-full border border-gray-300 p-2" required>
+          <option value="lose_weight">Perder peso</option>
+          <option value="gain_muscle">Ganhar massa muscular</option>
+          <option value="maintain_weight">Manter o peso atual</option>
+          <option value="improve_health">Melhorar a saúde geral</option>
+          <option value="improve_athletic">Melhorar desempenho atlético</option>
+        </select>
+      </div>
+      <div>
+        <label for="goal_time" class="block text-lg">Qual é o seu prazo para alcançar este objetivo?</label>
+        <select id="goal_time" name="goal_time" class="w-full border border-gray-300 p-2" required>
+          <option value="less_3_months">Menos de 3 meses</option>
+          <option value="3_6_months">3-6 meses</option>
+          <option value="6_12_months">6-12 meses</option>
+          <option value="more_1_year">Mais de 1 ano</option>
+        </select>
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Nível de Atividade</h2>
+      <div>
+        <label for="activity_level" class="block text-lg">Qual é o seu nível atual de atividade física?</label>
+        <select id="activity_level" name="activity_level" class="w-full border border-gray-300 p-2" required>
+          <option value="sedentary">Sedentário (pouco ou nenhum exercício)</option>
+          <option value="lightly_active">Levemente ativo (exercício leve/sessões de caminhada 1-3 dias/semana)</option>
+          <option value="moderately_active">Moderadamente ativo (exercício moderado/sessões de caminhada 3-5 dias/semana)</option>
+          <option value="very_active">Muito ativo (exercício pesado/sessões intensas 6-7 dias/semana)</option>
+          <option value="extremely_active">Extremamente ativo (exercício muito pesado, trabalho físico, ou duas sessões de treino diárias)</option>
+        </select>
+      </div>
+      <div>
+        <label for="exercise_frequency" class="block text-lg">Quantas vezes por semana você costuma se exercitar?</label>
+        <select id="exercise_frequency" name="exercise_frequency" class="w-full border border-gray-300 p-2" required>
+          <option value="0_1">0-1 vez</option>
+          <option value="2_3">2-3 vezes</option>
+          <option value="4_5">4-5 vezes</option>
+          <option value="6_7">6-7 vezes</option>
+        </select>
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Preferências e Restrições Alimentares</h2>
+      <div>
+        <label class="block text-lg">Você tem alguma restrição alimentar?</label>
+        <div class="flex items-center space-x-4">
+          <input type="radio" id="diet_restriction_yes" name="diet_restriction" value="yes" required>
+          <label for="diet_restriction_yes">Sim</label>
+          <input type="radio" id="diet_restriction_no" name="diet_restriction" value="no" required>
+          <label for="diet_restriction_no">Não</label>
+        </div>
+      </div>
+      <div id="diet_restrictions" class="hidden">
+        <label for="diet_restriction_type" class="block text-lg">Se sim, quais?</label>
+        <select id="diet_restriction_type" name="diet_restriction_type" class="w-full border border-gray-300 p-2">
+          <option value="vegetarian">Vegetarianismo</option>
+          <option value="vegan">Veganismo</option>
+          <option value="lactose_intolerance">Intolerância à lactose</option>
+          <option value="nut_allergy">Alergia a nozes</option>
+          <option value="gluten">Glúten</option>
+          <option value="other">Outros (especifique)</option>
+        </select>
+      </div>
+      <div>
+        <label for="food_preferences" class="block text-lg">Quais são suas preferências alimentares?</label>
+        <select id="food_preferences" name="food_preferences" class="w-full border border-gray-300 p-2">
+          <option value="high_protein">Alimentos ricos em proteínas</option>
+          <option value="low_carb">Alimentos com baixo teor de carboidratos</option>
+          <option value="balanced_diet">Dietas balanceadas</option>
+          <option value="other">Outros (especifique)</option>
+        </select>
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Histórico de Treino e Saúde</h2>
+      <div>
+        <label for="training_experience" class="block text-lg">Você tem alguma experiência anterior com treino?</label>
+        <select id="training_experience" name="training_experience" class="w-full border border-gray-300 p-2" required>
+          <option value="none">Nenhuma</option>
+          <option value="beginner">Iniciante</option>
+          <option value="intermediate">Intermediário</option>
+          <option value="advanced">Avançado</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-lg">Você possui alguma condição médica ou lesão que possa afetar seu treino?</label>
+        <div class="flex items-center space-x-4">
+          <input type="radio" id="medical_condition_yes" name="medical_condition" value="yes" required>
+          <label for="medical_condition_yes">Sim</label>
+          <input type="radio" id="medical_condition_no" name="medical_condition" value="no" required>
+          <label for="medical_condition_no">Não</label>
+        </div>
+      </div>
+      <div id="medical_conditions" class="hidden">
+        <label for="medical_condition_details" class="block text-lg">Se sim, especifique:</label>
+        <input type="text" id="medical_condition_details" name="medical_condition_details" class="w-full border border-gray-300 p-2">
+      </div>
+      <h2 class="text-2xl font-semibold mb-4">Estilo de Vida</h2>
+      <div>
+        <label for="sleep_hours" class="block text-lg">Quantas horas de sono você costuma ter por noite?</label>
+        <select id="sleep_hours" name="sleep_hours" class="w-full border border-gray-300 p-2" required>
+          <option value="less_5">Menos de 5 horas</option>
+          <option value="5_6">5-6 horas</option>
+          <option value="7_8">7-8 horas</option>
+          <option value="more_8">Mais de 8 horas</option>
+        </select>
+      </div>
+      <div>
+        <label for="stress_level" class="block text-lg">Qual é o seu nível de estresse diário?</label>
+        <select id="stress_level" name="stress_level" class="w-full border border-gray-300 p-2" required>
+          <option value="low">Baixo</option>
+          <option value="moderate">Moderado</option>
+          <option value="high">Alto</option>
+        </select>
+      </div>
+      <div class="text-center mt-8">
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Enviar</button>
+      </div>
+    </form>
+  </main>
+  <script>
+    document.getElementById('diet_restriction_yes').addEventListener('change', function() {
+      document.getElementById('diet_restrictions').classList.remove('hidden');
+    });
+    document.getElementById('diet_restriction_no').addEventListener('change', function() {
+      document.getElementById('diet_restrictions').classList.add('hidden');
+    });
+    document.getElementById('medical_condition_yes').addEventListener('change', function() {
+      document.getElementById('medical_conditions').classList.remove('hidden');
+    });
+    document.getElementById('medical_condition_no').addEventListener('change', function() {
+      document.getElementById('medical_conditions').classList.add('hidden');
+    });
+    document.getElementById('fitness-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
+      localStorage.setItem('fitnessData', JSON.stringify(data));
+      window.location.href = 'result.html';
+    });
+  </script>
+</body>
+</html>
